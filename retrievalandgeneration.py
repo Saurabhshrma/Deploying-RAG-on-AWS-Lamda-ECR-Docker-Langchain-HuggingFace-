@@ -1,6 +1,6 @@
 from langchain.chains import RetrievalQA
-from langchain.vectorstores import FAISS
-from langchain_community.llms import Bedrock
+from langchain_community.vectorstores import FAISS
+from langchain_aws import BedrockLLM
 import boto3
 from langchain.prompts import PromptTemplate
 from ingestion import get_vector_store,data_ingestion
@@ -30,19 +30,17 @@ PROMPT=PromptTemplate(
 
 
 def get_llm():
-    llm = Bedrock(model_id = "amazon.titan-text-lite-v1",client=bedrock,model_kwargs={"max_tokens":512})
-
-
-retriever = vectorstore_faiss.as_retriever(search_type="similarity",search_kwargs={"k":3})
+    llm = BedrockLLM(model_id = "amazon.titan-text-lite-v1",client=bedrock)
+    return llm
 
 
 def get_response_llm(llm,vectorstore_faiss,query):
     qa = RetrievalQA.from_chain_type(llm = llm,
                                      chain_type = "stuff",
-                                     retriever = retriever,
+                                     retriever = vectorstore_faiss.as_retriever(search_type="similarity",search_kwargs={"k":3}),
                                      return_source_documents = True,
                                      chain_type_kwargs = {'prompt':PROMPT} )
-    answer = qa({"query":query})
+    answer = qa.invoke({"query":query})
     return answer["result"]
 
 if __name__ == '__main__':
