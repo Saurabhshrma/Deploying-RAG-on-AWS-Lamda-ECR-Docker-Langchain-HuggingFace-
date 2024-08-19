@@ -13,7 +13,7 @@ setup(
         "tiktoken==0.7.0",
         "boto3==1.34.37",
         "langchain-community==0.2.12",
-        "awscli==2.17.32",
+        "awscli==1.34.0",
         "streamlit==1.37.0",
         "pypdf==3.0.1",
         "faiss-cpu==1.8.0.post1",
