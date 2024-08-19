@@ -15,7 +15,7 @@ setup(
         "langchain-community==0.2.12",
         "awscli==1.34.0",
         "streamlit==1.37.0",
-        "pypdf==3.0.1",
+        "pypdf==4.3.1",
         "faiss-cpu==1.8.0.post1",
         "langchain-aws==0.1.16"
     ]
