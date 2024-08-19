@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY . /app/
 
-RUN RUN pip install --no-cache-dir *.whl -r requirements.txt
+RUN pip install --no-cache-dir *.whl -r requirements.txt
 
 CMD ["streamlit","run","app.py"]
