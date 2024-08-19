@@ -6,7 +6,7 @@ setup(
     author="Saurabh",
     author_email="saurabh1346.ss@gmail.com",
     packages=find_packages(),
-    install_requires=["langchain","langchainhub","bs4","tiktoken","openai","boto3==1.34.37","langchain_community","chromadb","awscli",
+    install_requires=["langchain","langchainhub","bs4","tiktoken","openai","boto3","langchain_community","chromadb","awscli",
 "streamlit",
 "pypdf",
 "faiss-cpu",
